@@ -33,5 +33,7 @@ public class PlayerController : MonoBehaviour
         Vector3 newPos = currentPos + movement * Time.fixedDeltaTime;
 
         rb.MovePosition(newPos);
+
+        transform.rotation = Quaternion.LookRotation(inputVector);
     }
 }
