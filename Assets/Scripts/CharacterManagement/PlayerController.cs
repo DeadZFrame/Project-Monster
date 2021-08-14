@@ -21,6 +21,11 @@ public class PlayerController : MonoBehaviour
     {
         if(Input.anyKey)
             Movement();
+        else
+        {
+            animator.SetBool("isWalking", false);
+        }
+
         if(Input.GetKeyDown(KeyCode.Space))
         {
             animator.SetBool("isFading", true);
