@@ -20,7 +20,10 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         if(Input.GetAxis("Horizontal")>0 || Input.GetAxis("Horizontal")<0 ||Input.GetAxis("Vertical")>0 || Input.GetAxis("Vertical")<0)
+        {
             Movement();
+            animator.SetBool("isWalking", true);
+        }
         else
         {
             animator.SetBool("isWalking", false);
@@ -34,11 +37,11 @@ public class PlayerController : MonoBehaviour
 
     public void Movement()
     {
-        Vector3 vel = rb.velocity;
-        if(vel.magnitude>0)
-        {
-            animator.SetBool("isWalking", true);
-        }
+        //Vector3 vel = rb.velocity;
+        //if(vel.magnitude>0)
+        //{
+            
+        //}
         Vector3 currentPos = rb.position;
 
         float horizontalInput = Input.GetAxis("Horizontal");
