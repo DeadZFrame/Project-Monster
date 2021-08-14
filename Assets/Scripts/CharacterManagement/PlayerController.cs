@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
 
     Rigidbody rb;
 
+    public GameManager gameManager;
     private Animator animator;
 
     private void Awake()
@@ -53,5 +54,11 @@ public class PlayerController : MonoBehaviour
         rb.MovePosition(newPos);
 
         transform.rotation = Quaternion.LookRotation(inputVector);
+    }
+    void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.CompareTag("Soul")){
+            gameManager.IncreaseSoul();
+        }
     }
 }

@@ -2,15 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
     public string lvl1;
     public GameObject settingsButton;
+    public Button lastGameButton;
     // Start is called before the first frame update
     void Start()
     {
-        
+        lastGameButton.interactable = (PlayerPrefs.HasKey("currentLevel")) ? true : false ;
     }
 
     // Update is called once per frame
@@ -27,6 +29,10 @@ public class MainMenu : MonoBehaviour
 
     public void StartGame()
     {
+        PlayerPrefs.DeleteAll();
+        SceneManager.LoadScene(lvl1);
+    }
+    public void LastGame () {
         SceneManager.LoadScene(lvl1);
     }
     public void OpenOptions()
