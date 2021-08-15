@@ -47,10 +47,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-<<<<<<< HEAD
         //Debug.Log(isTouchingDoor);
-=======
->>>>>>> 561bf818c92182659f3ba2b6dadb6d6767326389
         if (doorTransform != null && isTouchingDoor)
         {
             doorTransform.Rotate(Vector3.up, 1f);
