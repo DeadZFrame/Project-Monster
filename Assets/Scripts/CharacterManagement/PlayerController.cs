@@ -213,6 +213,7 @@ public class PlayerController : MonoBehaviour
         darkCanvas.SetActive(false);
         yield return new WaitForSeconds(1f);
         animator.SetBool("isFading", false);
+        lastTeddyAction = false;
     }
 
 }
