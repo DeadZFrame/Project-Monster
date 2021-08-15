@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
 
     Transform doorTransform;
     private bool isTouchingDoor = false;
+    [System.NonSerialized]public bool paranormalEvent = false;
 
     public PsychodelicEffect manicEffect;
     public CameraShake camShake;
@@ -49,19 +50,14 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("isWalking", false);
         }
 
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            animator.SetBool("isFading", true);
-        }
+        //if (Input.GetKeyDown(KeyCode.Space))
+        //{
+        //    animator.SetBool("isFading", true);
+        //}
     }
 
     public void Movement()
     {
-        //Vector3 vel = rb.velocity;
-        //if(vel.magnitude>0)
-        //{
-
-        //}
         Vector3 currentPos = rb.position;
 
         float horizontalInput = Input.GetAxis("Horizontal");
@@ -103,6 +99,7 @@ public class PlayerController : MonoBehaviour
             other.gameObject.GetComponent<Renderer>().sharedMaterial = teddyMaterials[1];
             manicEffect.enabled = true;
             camShake.enabled = true;
+            paranormalEvent = true;
             
             for(int i=0; i<lights.Length; i++)
             {
@@ -119,6 +116,7 @@ public class PlayerController : MonoBehaviour
 
             manicEffect.enabled = false;
             camShake.enabled = false;
+            paranormalEvent = false;
 
             for (int i = 0; i < lights.Length; i++)
             {
