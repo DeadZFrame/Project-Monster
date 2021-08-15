@@ -20,7 +20,10 @@ public class PlayerController : MonoBehaviour
     public CameraShake camShake;
     public GameManager gameManager;
 
+  
+
     public LightFlickering[] lights;
+
 
     public GameObject lantern;
 
@@ -39,6 +42,7 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         DemonAnim = DemonAnim.GetComponent<Animator>();
+          
     }
     private void Awake()
     {
@@ -105,9 +109,13 @@ public class PlayerController : MonoBehaviour
         {
             doorTransform = collision.gameObject.transform;
             isTouchingDoor = true;
-        }else if(collision.gameObject.CompareTag("Soul")){
+            AudioManager.instance.Play("DoorBell");
+        }
+        else if(collision.gameObject.CompareTag("Soul")){
             gameManager.IncreaseSoul();
         }
+       
+
     }
 
     private void OnCollisionExit(Collision collision)
@@ -138,7 +146,7 @@ public class PlayerController : MonoBehaviour
             {
                 lastTeddyAction = true;
             }
-
+            AudioManager.instance.Play("DemonDoorClip");
         }
 
         StartCoroutine(SpawnAnotherTeddy());
@@ -186,7 +194,7 @@ public class PlayerController : MonoBehaviour
             teddys[teddyIndex].GetComponent<Rigidbody>().detectCollisions = false;
             yield return new WaitForSeconds(0.5f);
             teddys[teddyIndex].SetActive(false);
-            teddyIndex++;     
+            teddyIndex++;
             teddys[teddyIndex].SetActive(true);
         }
         
