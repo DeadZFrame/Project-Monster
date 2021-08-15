@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
     Rigidbody rb;
 
     private Animator animator;
-
+    public Animator DemonAnim;
     Transform doorTransform;
     private bool isTouchingDoor = false;
     [System.NonSerialized]public bool paranormalEvent = false;
@@ -23,7 +23,10 @@ public class PlayerController : MonoBehaviour
     public GameObject lantern;
 
     public Material[] teddyMaterials;
-
+    private void Start()
+    {
+        DemonAnim = DemonAnim.GetComponent<Animator>();
+    }
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -96,6 +99,7 @@ public class PlayerController : MonoBehaviour
     {
         if(other.gameObject.CompareTag("Teddy"))
         {
+            DemonAnim.enabled = true;
             other.gameObject.GetComponent<Renderer>().sharedMaterial = teddyMaterials[1];
             manicEffect.enabled = true;
             camShake.enabled = true;
@@ -106,6 +110,7 @@ public class PlayerController : MonoBehaviour
                 lights[i].enabled = true;
             }
         }
+       
     }
 
     private void OnTriggerExit(Collider other)
