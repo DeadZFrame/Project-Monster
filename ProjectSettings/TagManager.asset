@@ -7,6 +7,8 @@ TagManager:
   - Door
   - Teddy
   - Soul
+  - CollectableLantern
+  - LightWall
   layers:
   - Default
   - TransparentFX

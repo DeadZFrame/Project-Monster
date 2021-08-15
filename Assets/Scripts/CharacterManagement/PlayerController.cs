@@ -19,8 +19,14 @@ public class PlayerController : MonoBehaviour
     public PsychodelicEffect manicEffect;
     public CameraShake camShake;
     public GameManager gameManager;
+    public GameObject candle;
 
-  
+    private bool canMove = true;
+    private bool manicEffectIsOver = false;
+    public GameObject lightWall;
+
+
+
 
     public LightFlickering[] lights;
 
@@ -38,6 +44,9 @@ public class PlayerController : MonoBehaviour
     private bool isPressingE = false;
     private bool hasFadeOut = false;
     private bool lastTeddyAction = false;
+    private bool hasTookLantern = false;
+
+    public GameObject staticLantern;
 
     private void Start()
     {
@@ -63,12 +72,22 @@ public class PlayerController : MonoBehaviour
         {
             StartCoroutine(GetLastTeddy());
         }
+
+        if(Input.GetKey(KeyCode.E))
+        {
+            isPressingE = true;
+        }
+
+        if(Input.GetKeyUp(KeyCode.E))
+        {
+            isPressingE = false;
+        }
     }
     private void FixedUpdate()
     {
         if (Input.GetAxis("Horizontal") > 0 || Input.GetAxis("Horizontal") < 0 || Input.GetAxis("Vertical") > 0 || Input.GetAxis("Vertical") < 0)
         {
-            if (!uI.onDialogue)
+            if (!uI.onDialogue && canMove)
             {
                 Movement();
                 animator.SetBool("isWalking", true);
@@ -114,6 +133,16 @@ public class PlayerController : MonoBehaviour
         else if(collision.gameObject.CompareTag("Soul")){
             gameManager.IncreaseSoul();
         }
+
+        if(collision.gameObject.CompareTag("LightWall") && hasTookLantern)
+        {
+            collision.gameObject.SetActive(false);
+        }
+
+        else if(collision.gameObject.CompareTag("LightWall") && !hasTookLantern)
+        {
+            Debug.Log("It's too dark to go there.");
+        }
        
 
     }
@@ -131,6 +160,7 @@ public class PlayerController : MonoBehaviour
     {
         if(other.gameObject.CompareTag("Teddy"))
         {
+            lightWall.SetActive(true);
             DemonAnim.enabled = true;
             other.gameObject.GetComponent<Renderer>().sharedMaterial = teddyMaterials[1];
             manicEffect.enabled = true;
@@ -142,14 +172,38 @@ public class PlayerController : MonoBehaviour
                 lights[i].enabled = true;
             }
 
-            if(teddys[teddyIndex].GetComponent<TeddyScript>().isLastTeddy)
+            if(teddys[teddyIndex].GetComponent<TeddyScript>().isFirstTeddy)
+            {
+                //canMove = false;
+                animator.SetBool("isWalking", false);
+                teddys[teddyIndex].GetComponent<TeddyScript>().isFirstTeddy = false;
+            }
+
+            else if(teddys[teddyIndex].GetComponent<TeddyScript>().isLastTeddy)
             {
                 lastTeddyAction = true;
             }
             AudioManager.instance.Play("DemonDoorClip");
+
+            if(!teddys[teddyIndex].GetComponent<TeddyScript>().isLastTeddy)
+                StartCoroutine(SpawnAnotherTeddy());
         }
 
-        StartCoroutine(SpawnAnotherTeddy());
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.CompareTag("CollectableLantern"))
+        {
+            if (isPressingE && manicEffectIsOver)
+            {
+                other.gameObject.SetActive(false);
+                animator.SetBool("isCandleTrue", true);
+                lantern.SetActive(true);
+                candle.SetActive(true);
+                hasTookLantern = true;
+            }
+        }
 
     }
 
@@ -157,6 +211,7 @@ public class PlayerController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Teddy"))
         {
+            StopCoroutine(SpawnAnotherTeddy());
             other.gameObject.GetComponent<Renderer>().sharedMaterial = teddyMaterials[0];
 
             manicEffect.enabled = false;
@@ -174,7 +229,8 @@ public class PlayerController : MonoBehaviour
                 StartCoroutine(LetThereBeDark());
             }
 
-            lantern.SetActive(true);
+            //lantern.SetActive(true);
+            staticLantern.SetActive(true); 
         }
     }
 
@@ -184,20 +240,19 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(1.7f);
         darkCanvas.SetActive(false);
         firstTime = false;
+        canMove = true;
+        manicEffectIsOver = true;
     }
 
     IEnumerator SpawnAnotherTeddy()
     {
-        if(teddyIndex+1 != teddys.Length)
-        {
-            yield return new WaitForSeconds(3.5f);
-            teddys[teddyIndex].GetComponent<Rigidbody>().detectCollisions = false;
-            yield return new WaitForSeconds(0.5f);
-            teddys[teddyIndex].SetActive(false);
-            teddyIndex++;
+        yield return new WaitForSeconds(3.5f);
+        teddys[teddyIndex].GetComponent<Rigidbody>().detectCollisions = false;
+        yield return new WaitForSeconds(0.5f);
+        teddys[teddyIndex].SetActive(false);
+        teddyIndex++;
+        if(teddyIndex != teddys.Length)
             teddys[teddyIndex].SetActive(true);
-        }
-        
     }
 
     IEnumerator GetLastTeddy()
