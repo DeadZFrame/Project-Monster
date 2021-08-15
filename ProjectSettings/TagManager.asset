@@ -9,6 +9,7 @@ TagManager:
   - Soul
   - CollectableLantern
   - LightWall
+  - Trigger
   layers:
   - Default
   - TransparentFX
