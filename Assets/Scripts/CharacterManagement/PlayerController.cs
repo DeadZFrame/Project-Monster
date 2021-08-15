@@ -31,6 +31,10 @@ public class PlayerController : MonoBehaviour
 
     int teddyIndex = 0;
 
+    private bool isPressingE = false;
+    private bool hasFadeOut = false;
+    private bool lastTeddyAction = false;
+
     private void Start()
     {
         DemonAnim = DemonAnim.GetComponent<Animator>();
@@ -43,10 +47,14 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(isTouchingDoor);
         if (doorTransform != null && isTouchingDoor)
         {
             doorTransform.Rotate(Vector3.up, 1f);
+        }
+
+        if(lastTeddyAction && Input.GetKeyDown(KeyCode.E))
+        {
+            StartCoroutine(GetLastTeddy());
         }
     }
     private void FixedUpdate()
@@ -119,6 +127,12 @@ public class PlayerController : MonoBehaviour
             {
                 lights[i].enabled = true;
             }
+
+            if(teddys[teddyIndex].GetComponent<TeddyScript>().isLastTeddy)
+            {
+                lastTeddyAction = true;
+            }
+
         }
 
         StartCoroutine(SpawnAnotherTeddy());
@@ -170,6 +184,21 @@ public class PlayerController : MonoBehaviour
             teddys[teddyIndex].SetActive(true);
         }
         
+    }
+
+    IEnumerator GetLastTeddy()
+    {
+        hasFadeOut = true;
+        teddys[teddyIndex].GetComponent<Rigidbody>().detectCollisions = false;
+        yield return new WaitForSeconds(0.5f);
+        teddys[teddyIndex].SetActive(false);
+        animator.SetBool("isFading", true);
+        yield return new WaitForSeconds(1f);
+        darkCanvas.SetActive(true);
+        yield return new WaitForSeconds(2f);
+        darkCanvas.SetActive(false);
+        yield return new WaitForSeconds(1f);
+        animator.SetBool("isFading", false);
     }
 
 }

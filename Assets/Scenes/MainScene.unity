@@ -1112,6 +1112,19 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 12.89
   m_Center: {x: -11.75, y: 2.0802586, z: -2.98}
+--- !u!114 &514170460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 514170454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e0c0cdcb875cb04ab017e50a96dce0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isLastTeddy: 1
 --- !u!1 &584636030
 GameObject:
   m_ObjectHideFlags: 0
@@ -1441,7 +1454,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &711349617
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3279,8 +3292,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 11.58473, y: 6.1019964, z: 1}
-  m_Center: {x: -1.1280364, y: 0.5986862, z: -0.15}
+  m_Size: {x: 22.663094, y: 6.1019964, z: 1}
+  m_Center: {x: -6.667207, y: 0.5986862, z: -0.14999944}
 --- !u!1 &1574072538 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -5936589240652410425, guid: 541205313ad3f9648a1b276cd62405ba, type: 3}
@@ -4049,6 +4062,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!114 &2054880778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2054880772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e0c0cdcb875cb04ab017e50a96dce0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isLastTeddy: 0
 --- !u!1 &2071175338 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -8699787447509501512, guid: 712281204907fb646a5310947da4ceca, type: 3}
