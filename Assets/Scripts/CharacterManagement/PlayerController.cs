@@ -11,15 +11,35 @@ public class PlayerController : MonoBehaviour
 
     private Animator animator;
 
+    Transform doorTransform;
+    private bool isTouchingDoor = false;
+
+    public PsychodelicEffect manicEffect;
+    public CameraShake camShake;
+
+    public LightFlickering[] lights;
+
+    public GameObject lantern;
+
+    public Material[] teddyMaterials;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
     }
 
+    private void Update()
+    {
+        Debug.Log(isTouchingDoor);
+        if (doorTransform != null && isTouchingDoor)
+        {
+            doorTransform.Rotate(Vector3.up, 1f);
+        }
+    }
     private void FixedUpdate()
     {
-        if(Input.GetAxis("Horizontal")>0 || Input.GetAxis("Horizontal")<0 ||Input.GetAxis("Vertical")>0 || Input.GetAxis("Vertical")<0)
+        if (Input.GetAxis("Horizontal") > 0 || Input.GetAxis("Horizontal") < 0 || Input.GetAxis("Vertical") > 0 || Input.GetAxis("Vertical") < 0)
         {
             Movement();
             animator.SetBool("isWalking", true);
@@ -29,7 +49,7 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("isWalking", false);
         }
 
-        if(Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             animator.SetBool("isFading", true);
         }
@@ -40,7 +60,7 @@ public class PlayerController : MonoBehaviour
         //Vector3 vel = rb.velocity;
         //if(vel.magnitude>0)
         //{
-            
+
         //}
         Vector3 currentPos = rb.position;
 
@@ -57,4 +77,57 @@ public class PlayerController : MonoBehaviour
 
         transform.rotation = Quaternion.LookRotation(inputVector);
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Door"))
+        {
+            doorTransform = collision.gameObject.transform;
+            isTouchingDoor = true;
+        }
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Door"))
+        {
+            doorTransform = null;
+            isTouchingDoor = false;
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.CompareTag("Teddy"))
+        {
+            other.gameObject.GetComponent<Renderer>().sharedMaterial = teddyMaterials[1];
+            manicEffect.enabled = true;
+            camShake.enabled = true;
+            
+            for(int i=0; i<lights.Length; i++)
+            {
+                lights[i].enabled = true;
+            }
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("Teddy"))
+        {
+            other.gameObject.GetComponent<Renderer>().sharedMaterial = teddyMaterials[0];
+
+            manicEffect.enabled = false;
+            camShake.enabled = false;
+
+            for (int i = 0; i < lights.Length; i++)
+            {
+                lights[i].enabled = false;
+                lights[i].gameObject.SetActive(false);
+            }
+
+            lantern.SetActive(true);
+        }
+    }
+
 }
