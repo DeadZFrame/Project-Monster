@@ -8,9 +8,9 @@ public class UIManager : MonoBehaviour
 {
     public TextMeshProUGUI dialogText, fadingText;
     public Image exorcist, demon;
-    public GameObject pausePanel;
+    public GameObject pausePanel, dialoguePanel;
 
-    private bool exorcistTalking;
+    private bool exorcistTalking, onDialogue;
 
     public string[] dialogueArray;
     string dialogue;
@@ -39,6 +39,7 @@ public class UIManager : MonoBehaviour
     {
         if (dialogueIndex != dialogueArray.Length - 1)
         {
+            onDialogue = true;
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 if (TextWriter.instance.isWrited)
@@ -57,6 +58,7 @@ public class UIManager : MonoBehaviour
         else
         {
             fadingText.gameObject.SetActive(false);
+            onDialogue = false;
         }
 
         if (exorcistTalking)
@@ -69,6 +71,11 @@ public class UIManager : MonoBehaviour
             exorcist.gameObject.SetActive(false);
             demon.gameObject.SetActive(true);
         }
+
+        if (onDialogue)
+            dialoguePanel.SetActive(true);
+        else
+            dialoguePanel.SetActive(false);
     }
 
     public void PauseManager()

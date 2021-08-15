@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class InsanityBarScript : MonoBehaviour
 {
     public GameObject player;
+    public Animation background, fill;
+
     Vector3 velocity = Vector3.zero;
     public Vector3 offset;
 
@@ -15,11 +17,15 @@ public class InsanityBarScript : MonoBehaviour
     {
         playerBase = GameObject.Find("Player").GetComponent<PlayerController>();
         gameObject.GetComponent<Slider>();
+
+        background.GetComponent<Animation>();
+        fill.GetComponent<Animation>();
     }
 
     private void Start()
     {
         gameObject.SetActive(true);
+        gameObject.GetComponent<Slider>().value = 0;
     }
 
     private void Update()
@@ -31,7 +37,25 @@ public class InsanityBarScript : MonoBehaviour
 
         if (playerBase.paranormalEvent)
         {
-            gameObject.GetComponent<Slider>().value += 0.5f * Time.fixedDeltaTime;
+            gameObject.GetComponent<Slider>().value += 0.2f * Time.fixedDeltaTime;
+
+            background.Play();
+        }
+        else
+        {
+            if (gameObject.GetComponent<Slider>().value != 0)
+            {
+                background.gameObject.SetActive(true);
+                fill.Play();
+            }
+            else
+            {
+                var fillColor = fill.gameObject.GetComponent<Image>().color;
+                fillColor.a = 1;
+                background.gameObject.SetActive(false);
+            }
+                
+            gameObject.GetComponent<Slider>().value -= 0.1f * Time.fixedDeltaTime;
         }
     }
 }
