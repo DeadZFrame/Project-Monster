@@ -189,6 +189,13 @@ public class PlayerController : MonoBehaviour
                 StartCoroutine(SpawnAnotherTeddy());
         }
 
+        if (other.gameObject.tag.Equals("Trigger"))
+        {
+            if (!uI.trigger)
+                uI.trigger = true;
+            other.gameObject.SetActive(false);
+        }
+
     }
 
     private void OnTriggerStay(Collider other)
