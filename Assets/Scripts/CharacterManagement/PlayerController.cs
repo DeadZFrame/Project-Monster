@@ -149,6 +149,13 @@ public class PlayerController : MonoBehaviour
             AudioManager.instance.Play("DemonDoorClip");
         }
 
+        if (other.gameObject.tag.Equals("Trigger"))
+        {
+            if (!uI.trigger)
+                uI.trigger = true;
+            other.gameObject.SetActive(false);
+        }
+
         StartCoroutine(SpawnAnotherTeddy());
 
     }
