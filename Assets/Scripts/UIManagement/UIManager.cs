@@ -10,7 +10,7 @@ public class UIManager : MonoBehaviour
     public Image exorcist, demon;
     public GameObject pausePanel, dialoguePanel;
 
-    [System.NonSerialized]public bool exorcistTalking, onDialogue;
+    [System.NonSerialized] public bool exorcistTalking, onDialogue, trigger, first;
 
     public string[] dialogueArray;
     string dialogue;
@@ -27,6 +27,11 @@ public class UIManager : MonoBehaviour
     {
         dialogue = dialogueArray[dialogueIndex];
         TextWriter.WriteText_Static(dialogText, dialogue, .1f, true, true);
+        dialogueIndex++;
+
+        trigger = false;
+        onDialogue = true;
+        first = true;
     }
 
     private void Update()
@@ -37,16 +42,31 @@ public class UIManager : MonoBehaviour
 
     public void DialogueManager()
     {
-        if (dialogueIndex != dialogueArray.Length - 1)
-        {
+        if (trigger)
             onDialogue = true;
-            if (Input.GetKeyDown(KeyCode.Space))
+
+        if (onDialogue)
+            dialoguePanel.SetActive(true);
+        else
+            dialoguePanel.SetActive(false);
+
+        if (dialogueIndex != dialogueArray.Length - 1 && onDialogue)
+        {
+            if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0) || trigger)
             {
-                if (TextWriter.instance.isWrited)
+                if (TextWriter.instance.isWrited && dialogueIndex != 4)
                 {
-                    dialogueIndex++;
                     dialogue = dialogueArray[dialogueIndex];
-                    TextWriter.WriteText_Static(dialogText, dialogue, .1f, true, true);
+                    TextWriter.WriteText_Static(dialogText, dialogue, .04f, true, true);
+                    dialogueIndex++;
+                    first = true;
+                }
+                else if (trigger)
+                {
+                    dialogue = dialogueArray[dialogueIndex];
+                    TextWriter.WriteText_Static(dialogText, dialogue, .04f, true, true);
+                    trigger = false;
+                    dialogueIndex++;
                 }
                 else
                 {
@@ -61,7 +81,18 @@ public class UIManager : MonoBehaviour
             onDialogue = false;
         }
 
-        if (exorcistTalking)
+        if (dialogueIndex == 4 && first)
+        {
+            onDialogue = false;
+            first = false;
+        }
+
+        if (dialogueIndex <= 5 || dialogueIndex == 14)
+            exorcistTalking = true;
+        else
+            exorcistTalking = false;
+
+        if (!exorcistTalking)
         {
             exorcist.gameObject.SetActive(true);
             demon.gameObject.SetActive(false);
@@ -71,12 +102,6 @@ public class UIManager : MonoBehaviour
             exorcist.gameObject.SetActive(false);
             demon.gameObject.SetActive(true);
         }
-
-        if (onDialogue)
-            dialoguePanel.SetActive(true);
-            
-        else
-            dialoguePanel.SetActive(false);
     }
 
     public void PauseManager()
@@ -85,7 +110,7 @@ public class UIManager : MonoBehaviour
         {
             pausePanel.SetActive(true);
         }
-        else if(Input.GetKeyDown(KeyCode.Escape) && pausePanel.activeInHierarchy)
+        else if (Input.GetKeyDown(KeyCode.Escape) && pausePanel.activeInHierarchy)
         {
             pausePanel.SetActive(false);
         }

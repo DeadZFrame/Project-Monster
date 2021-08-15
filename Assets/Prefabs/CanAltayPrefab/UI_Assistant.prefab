@@ -575,8 +575,24 @@ MonoBehaviour:
   pausePanel: {fileID: 0}
   dialoguePanel: {fileID: 8822314790998364033}
   dialogueArray:
-  - kalsnkjghalsgaslrg
-  - "\u015Fail\u015Fkefjlsjhf\u015F"
+  - So this is Miss Granger's house.
+  - She said there's been a lot of paranormal happening in the house for the past
+    few days.
+  - 'But from the outside it just looks like a normal house. '
+  - Everything seems normal for now
+  - Everything seems normal for now
+  - Welcome man-child, I was getting bored.
+  - So my dear follower sent me a new playmate.
+  - ...
+  - Hmm, a cowardly person is my favourite.
+  - You also came here as a Exorcist! HAHAHA!!!
+  - Normally, I'd eat you right away, but I'm so bored.
+  - How about playing a game?
+  - The rules are simple, if you find me, I will give you 2 nice options.
+  - How can I find you?
+  - It's simple, as you get closer to the object I'm hiding, you will be VERY scared
+    as you are now.
+  - Good luck, you'll need it. HAHAHA!!!
   - "DON'T WR\u0130TE HERE!"
 --- !u!1 &8822314790830144838
 GameObject:
@@ -1015,7 +1031,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
