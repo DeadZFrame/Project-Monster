@@ -2551,6 +2551,76 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8922858765921575000, guid: b3e57a2326f948b42b5591552800c4ad, type: 3}
+      propertyPath: dialogueArray.Array.size
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 8922858765921575000, guid: b3e57a2326f948b42b5591552800c4ad, type: 3}
+      propertyPath: dialogueArray.Array.data[0]
+      value: So this is Miss Granger's house.
+      objectReference: {fileID: 0}
+    - target: {fileID: 8922858765921575000, guid: b3e57a2326f948b42b5591552800c4ad, type: 3}
+      propertyPath: dialogueArray.Array.data[1]
+      value: She said there's been a lot of paranormal happening in the house for
+        the past few days.
+      objectReference: {fileID: 0}
+    - target: {fileID: 8922858765921575000, guid: b3e57a2326f948b42b5591552800c4ad, type: 3}
+      propertyPath: dialogueArray.Array.data[2]
+      value: 'But from the outside it just looks like a normal house. '
+      objectReference: {fileID: 0}
+    - target: {fileID: 8922858765921575000, guid: b3e57a2326f948b42b5591552800c4ad, type: 3}
+      propertyPath: dialogueArray.Array.data[3]
+      value: Everything seems normal for now
+      objectReference: {fileID: 0}
+    - target: {fileID: 8922858765921575000, guid: b3e57a2326f948b42b5591552800c4ad, type: 3}
+      propertyPath: dialogueArray.Array.data[4]
+      value: Welcome man-child, I was getting bored.
+      objectReference: {fileID: 0}
+    - target: {fileID: 8922858765921575000, guid: b3e57a2326f948b42b5591552800c4ad, type: 3}
+      propertyPath: dialogueArray.Array.data[5]
+      value: So my dear follower sent me a new playmate.
+      objectReference: {fileID: 0}
+    - target: {fileID: 8922858765921575000, guid: b3e57a2326f948b42b5591552800c4ad, type: 3}
+      propertyPath: dialogueArray.Array.data[6]
+      value: ...
+      objectReference: {fileID: 0}
+    - target: {fileID: 8922858765921575000, guid: b3e57a2326f948b42b5591552800c4ad, type: 3}
+      propertyPath: dialogueArray.Array.data[7]
+      value: Hmm, a cowardly person is my favourite.
+      objectReference: {fileID: 0}
+    - target: {fileID: 8922858765921575000, guid: b3e57a2326f948b42b5591552800c4ad, type: 3}
+      propertyPath: dialogueArray.Array.data[8]
+      value: You also came here as a Exorcist! HAHAHA!!!
+      objectReference: {fileID: 0}
+    - target: {fileID: 8922858765921575000, guid: b3e57a2326f948b42b5591552800c4ad, type: 3}
+      propertyPath: dialogueArray.Array.data[9]
+      value: Normally, I'd eat you right away, but I'm so bored.
+      objectReference: {fileID: 0}
+    - target: {fileID: 8922858765921575000, guid: b3e57a2326f948b42b5591552800c4ad, type: 3}
+      propertyPath: dialogueArray.Array.data[10]
+      value: How about playing a game?
+      objectReference: {fileID: 0}
+    - target: {fileID: 8922858765921575000, guid: b3e57a2326f948b42b5591552800c4ad, type: 3}
+      propertyPath: dialogueArray.Array.data[11]
+      value: The rules are simple, if you find me, I will give you 2 nice options.
+      objectReference: {fileID: 0}
+    - target: {fileID: 8922858765921575000, guid: b3e57a2326f948b42b5591552800c4ad, type: 3}
+      propertyPath: dialogueArray.Array.data[12]
+      value: How can I find you?
+      objectReference: {fileID: 0}
+    - target: {fileID: 8922858765921575000, guid: b3e57a2326f948b42b5591552800c4ad, type: 3}
+      propertyPath: dialogueArray.Array.data[13]
+      value: It's simple, as you get closer to the object I'm hiding, you will be
+        VERY scared as you are now.
+      objectReference: {fileID: 0}
+    - target: {fileID: 8922858765921575000, guid: b3e57a2326f948b42b5591552800c4ad, type: 3}
+      propertyPath: dialogueArray.Array.data[14]
+      value: Good luck, you'll need it. HAHAHA!!!
+      objectReference: {fileID: 0}
+    - target: {fileID: 8922858765921575000, guid: b3e57a2326f948b42b5591552800c4ad, type: 3}
+      propertyPath: dialogueArray.Array.data[15]
+      value: "DON'T WR\u0130TE HERE!"
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3e57a2326f948b42b5591552800c4ad, type: 3}
 --- !u!4 &183801203133657651
