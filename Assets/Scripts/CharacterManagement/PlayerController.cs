@@ -24,9 +24,13 @@ public class PlayerController : MonoBehaviour
     public GameObject lantern;
 
     public Material[] teddyMaterials;
+    public GameObject[] teddys;
 
     private bool firstTime = true;
     public GameObject darkCanvas;
+
+    int teddyIndex = 0;
+
     private void Start()
     {
         DemonAnim = DemonAnim.GetComponent<Animator>();
@@ -116,7 +120,9 @@ public class PlayerController : MonoBehaviour
                 lights[i].enabled = true;
             }
         }
-       
+
+        StartCoroutine(SpawnAnotherTeddy());
+
     }
 
     private void OnTriggerExit(Collider other)
@@ -150,6 +156,20 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(1.7f);
         darkCanvas.SetActive(false);
         firstTime = false;
+    }
+
+    IEnumerator SpawnAnotherTeddy()
+    {
+        if(teddyIndex+1 != teddys.Length)
+        {
+            yield return new WaitForSeconds(3.5f);
+            teddys[teddyIndex].GetComponent<Rigidbody>().detectCollisions = false;
+            yield return new WaitForSeconds(0.5f);
+            teddys[teddyIndex].SetActive(false);
+            teddyIndex++;     
+            teddys[teddyIndex].SetActive(true);
+        }
+        
     }
 
 }
