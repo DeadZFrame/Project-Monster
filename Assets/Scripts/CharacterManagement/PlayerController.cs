@@ -24,6 +24,9 @@ public class PlayerController : MonoBehaviour
     public GameObject lantern;
 
     public Material[] teddyMaterials;
+
+    private bool firstTime = true;
+    public GameObject darkCanvas;
     private void Start()
     {
         DemonAnim = DemonAnim.GetComponent<Animator>();
@@ -132,8 +135,21 @@ public class PlayerController : MonoBehaviour
                 lights[i].gameObject.SetActive(false);
             }
 
+            if(firstTime)
+            {
+                StartCoroutine(LetThereBeDark());
+            }
+
             lantern.SetActive(true);
         }
+    }
+
+    IEnumerator LetThereBeDark()
+    {
+        darkCanvas.SetActive(true);
+        yield return new WaitForSeconds(1.7f);
+        darkCanvas.SetActive(false);
+        firstTime = false;
     }
 
 }
