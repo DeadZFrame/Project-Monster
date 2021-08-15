@@ -6,8 +6,9 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-    public TextMeshProUGUI dialogText;
+    public TextMeshProUGUI dialogText, fadingText;
     public Image exorcist, demon;
+    public GameObject pausePanel;
 
     private bool exorcistTalking;
 
@@ -19,6 +20,7 @@ public class UIManager : MonoBehaviour
     private void Awake()
     {
         dialogText.GetComponent<TextMeshProUGUI>();
+        fadingText.GetComponent<TextMeshProUGUI>();
     }
 
     private void Start()
@@ -30,6 +32,7 @@ public class UIManager : MonoBehaviour
     private void Update()
     {
         DialogueManager();
+        PauseManager();
     }
 
     public void DialogueManager()
@@ -49,6 +52,11 @@ public class UIManager : MonoBehaviour
                     TextWriter.WriteText_Static(dialogText, dialogue, 0f, true, true);
                 }
             }
+            fadingText.gameObject.SetActive(true);
+        }
+        else
+        {
+            fadingText.gameObject.SetActive(false);
         }
 
         if (exorcistTalking)
@@ -60,6 +68,18 @@ public class UIManager : MonoBehaviour
         {
             exorcist.gameObject.SetActive(false);
             demon.gameObject.SetActive(true);
+        }
+    }
+
+    public void PauseManager()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape) && !pausePanel.activeInHierarchy)
+        {
+            pausePanel.SetActive(true);
+        }
+        else if(Input.GetKeyDown(KeyCode.Escape) && pausePanel.activeInHierarchy)
+        {
+            pausePanel.SetActive(false);
         }
     }
 }
