@@ -43,7 +43,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(isTouchingDoor);
+        //Debug.Log(isTouchingDoor);
         if (doorTransform != null && isTouchingDoor)
         {
             doorTransform.Rotate(Vector3.up, 1f);
