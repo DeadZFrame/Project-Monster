@@ -11,35 +11,65 @@ public class PlayerController : MonoBehaviour
 
     public GameManager gameManager;
     private Animator animator;
+    public Animator DemonAnim;
+    Transform doorTransform;
+    private bool isTouchingDoor = false;
+    [System.NonSerialized]public bool paranormalEvent = false;
 
+    public PsychodelicEffect manicEffect;
+    public CameraShake camShake;
+    public GameManager gameManager;
+
+    public LightFlickering[] lights;
+
+    public GameObject lantern;
+
+    public Material[] teddyMaterials;
+    public GameObject[] teddys;
+
+    private bool firstTime = true;
+    public GameObject darkCanvas;
+
+    int teddyIndex = 0;
+
+    private void Start()
+    {
+        DemonAnim = DemonAnim.GetComponent<Animator>();
+    }
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
     }
 
+    private void Update()
+    {
+        Debug.Log(isTouchingDoor);
+        if (doorTransform != null && isTouchingDoor)
+        {
+            doorTransform.Rotate(Vector3.up, 1f);
+        }
+    }
     private void FixedUpdate()
     {
-        if(Input.GetAxis("Horizontal")>0 || Input.GetAxis("Horizontal")<0 ||Input.GetAxis("Vertical")>0 || Input.GetAxis("Vertical")<0)
+        if (Input.GetAxis("Horizontal") > 0 || Input.GetAxis("Horizontal") < 0 || Input.GetAxis("Vertical") > 0 || Input.GetAxis("Vertical") < 0)
+        {
             Movement();
+            animator.SetBool("isWalking", true);
+        }
         else
         {
             animator.SetBool("isWalking", false);
         }
 
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-            animator.SetBool("isFading", true);
-        }
+        //if (Input.GetKeyDown(KeyCode.Space))
+        //{
+        //    animator.SetBool("isFading", true);
+        //}
     }
 
     public void Movement()
     {
-        Vector3 vel = rb.velocity;
-        if(vel.magnitude>0)
-        {
-            animator.SetBool("isWalking", true);
-        }
         Vector3 currentPos = rb.position;
 
         float horizontalInput = Input.GetAxis("Horizontal");
@@ -55,10 +85,101 @@ public class PlayerController : MonoBehaviour
 
         transform.rotation = Quaternion.LookRotation(inputVector);
     }
+<<<<<<< HEAD
     void OnCollisionEnter(Collision collision)
     {
         if(collision.gameObject.CompareTag("Soul")){
             gameManager.IncreaseSoul();
         }
     }
+=======
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Door"))
+        {
+            doorTransform = collision.gameObject.transform;
+            isTouchingDoor = true;
+        }else if(collision.gameObject.CompareTag("Soul")){
+            gameManager.IncreaseSoul();
+        }
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Door"))
+        {
+            doorTransform = null;
+            isTouchingDoor = false;
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.CompareTag("Teddy"))
+        {
+            DemonAnim.enabled = true;
+            other.gameObject.GetComponent<Renderer>().sharedMaterial = teddyMaterials[1];
+            manicEffect.enabled = true;
+            camShake.enabled = true;
+            paranormalEvent = true;
+            
+            for(int i=0; i<lights.Length; i++)
+            {
+                lights[i].enabled = true;
+            }
+        }
+
+        StartCoroutine(SpawnAnotherTeddy());
+
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("Teddy"))
+        {
+            other.gameObject.GetComponent<Renderer>().sharedMaterial = teddyMaterials[0];
+
+            manicEffect.enabled = false;
+            camShake.enabled = false;
+            paranormalEvent = false;
+
+            for (int i = 0; i < lights.Length; i++)
+            {
+                lights[i].enabled = false;
+                lights[i].gameObject.SetActive(false);
+            }
+
+            if(firstTime)
+            {
+                StartCoroutine(LetThereBeDark());
+            }
+
+            lantern.SetActive(true);
+        }
+    }
+
+    IEnumerator LetThereBeDark()
+    {
+        darkCanvas.SetActive(true);
+        yield return new WaitForSeconds(1.7f);
+        darkCanvas.SetActive(false);
+        firstTime = false;
+    }
+
+    IEnumerator SpawnAnotherTeddy()
+    {
+        if(teddyIndex+1 != teddys.Length)
+        {
+            yield return new WaitForSeconds(3.5f);
+            teddys[teddyIndex].GetComponent<Rigidbody>().detectCollisions = false;
+            yield return new WaitForSeconds(0.5f);
+            teddys[teddyIndex].SetActive(false);
+            teddyIndex++;     
+            teddys[teddyIndex].SetActive(true);
+        }
+        
+    }
+
+>>>>>>> 4fefb1be2f848584dd3c79ec5e50f9b27a356df0
 }

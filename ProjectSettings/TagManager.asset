@@ -4,6 +4,11 @@
 TagManager:
   serializedVersion: 2
   tags:
+<<<<<<< HEAD
+=======
+  - Door
+  - Teddy
+>>>>>>> 4fefb1be2f848584dd3c79ec5e50f9b27a356df0
   - Soul
   layers:
   - Default
@@ -13,8 +18,8 @@ TagManager:
   - Water
   - UI
   - PostProcessing
-  - 
-  - 
+  - Door
+  - Player
   - 
   - 
   - 

@@ -18,6 +18,10 @@ public class GameManager : MonoBehaviour
     {3, 9}
   };
   public void Start () {
+<<<<<<< HEAD
+=======
+    print(currentLevel);
+>>>>>>> 4fefb1be2f848584dd3c79ec5e50f9b27a356df0
     if(PlayerPrefs.HasKey("currentLevel")){
       currentLevel = PlayerPrefs.GetInt("currentLevel");
       numberOfSouls = dictionary[currentLevel-1];
@@ -34,6 +38,11 @@ public class GameManager : MonoBehaviour
     
   }
   public void UpdateLevel () {
+<<<<<<< HEAD
+=======
+    if(currentLevel>3)
+      return;
+>>>>>>> 4fefb1be2f848584dd3c79ec5e50f9b27a356df0
     currentLevel++;
     OpenDoor(currentLevel);
     PlayerPrefs.SetInt("currentLevel",currentLevel);
@@ -42,4 +51,8 @@ public class GameManager : MonoBehaviour
   public void OpenDoor(int level) {
 
   }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 4fefb1be2f848584dd3c79ec5e50f9b27a356df0

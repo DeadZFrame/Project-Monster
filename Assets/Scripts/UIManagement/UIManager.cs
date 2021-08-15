@@ -2,19 +2,84 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-    [SerializeField] private TextWriter textWriter; 
-    public TextMeshProUGUI dialogText;
+    public TextMeshProUGUI dialogText, fadingText;
+    public Image exorcist, demon;
+    public GameObject pausePanel;
+
+    private bool exorcistTalking;
+
+    public string[] dialogueArray;
+    string dialogue;
+
+    private int dialogueIndex = 0;
 
     private void Awake()
     {
         dialogText.GetComponent<TextMeshProUGUI>();
+        fadingText.GetComponent<TextMeshProUGUI>();
     }
 
     private void Start()
     {
-        textWriter.WriteText(dialogText, "My goals are beyond of your understanding!", .3f);
+        dialogue = dialogueArray[dialogueIndex];
+        TextWriter.WriteText_Static(dialogText, dialogue, .1f, true, true);
+    }
+
+    private void Update()
+    {
+        DialogueManager();
+        PauseManager();
+    }
+
+    public void DialogueManager()
+    {
+        if (dialogueIndex != dialogueArray.Length - 1)
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                if (TextWriter.instance.isWrited)
+                {
+                    dialogueIndex++;
+                    dialogue = dialogueArray[dialogueIndex];
+                    TextWriter.WriteText_Static(dialogText, dialogue, .1f, true, true);
+                }
+                else
+                {
+                    TextWriter.WriteText_Static(dialogText, dialogue, 0f, true, true);
+                }
+            }
+            fadingText.gameObject.SetActive(true);
+        }
+        else
+        {
+            fadingText.gameObject.SetActive(false);
+        }
+
+        if (exorcistTalking)
+        {
+            exorcist.gameObject.SetActive(true);
+            demon.gameObject.SetActive(false);
+        }
+        else
+        {
+            exorcist.gameObject.SetActive(false);
+            demon.gameObject.SetActive(true);
+        }
+    }
+
+    public void PauseManager()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape) && !pausePanel.activeInHierarchy)
+        {
+            pausePanel.SetActive(true);
+        }
+        else if(Input.GetKeyDown(KeyCode.Escape) && pausePanel.activeInHierarchy)
+        {
+            pausePanel.SetActive(false);
+        }
     }
 }

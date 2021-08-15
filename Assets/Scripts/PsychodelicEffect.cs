@@ -27,4 +27,9 @@ public class PsychodelicEffect : MonoBehaviour
         
         ca.intensity.value = 1f;
     }
+
+    private void OnDisable()
+    {
+        ca.intensity.value = 0f;
+    }
 }
