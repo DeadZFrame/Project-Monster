@@ -37,15 +37,15 @@ public class InsanityBarScript : MonoBehaviour
 
         if (playerBase.paranormalEvent)
         {
+            background.gameObject.SetActive(true);
             gameObject.GetComponent<Slider>().value += 0.2f * Time.fixedDeltaTime;
 
-            background.Play();
+            background.Play("FadeIn");
         }
         else
         {
             if (gameObject.GetComponent<Slider>().value != 0)
             {
-                background.gameObject.SetActive(true);
                 fill.Play();
             }
             else

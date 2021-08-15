@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     public float speed = 2f;
 
     Rigidbody rb;
+    UIManager uI;
 
     private Animator animator;
     public Animator DemonAnim;
@@ -43,6 +44,7 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
+        uI = FindObjectOfType<UIManager>();
     }
 
     private void Update()
@@ -62,8 +64,11 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetAxis("Horizontal") > 0 || Input.GetAxis("Horizontal") < 0 || Input.GetAxis("Vertical") > 0 || Input.GetAxis("Vertical") < 0)
         {
-            Movement();
-            animator.SetBool("isWalking", true);
+            if (!uI.onDialogue)
+            {
+                Movement();
+                animator.SetBool("isWalking", true);
+            }
         }
         else
         {

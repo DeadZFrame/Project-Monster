@@ -10,7 +10,7 @@ public class UIManager : MonoBehaviour
     public Image exorcist, demon;
     public GameObject pausePanel, dialoguePanel;
 
-    private bool exorcistTalking, onDialogue;
+    [System.NonSerialized]public bool exorcistTalking, onDialogue;
 
     public string[] dialogueArray;
     string dialogue;
@@ -74,6 +74,7 @@ public class UIManager : MonoBehaviour
 
         if (onDialogue)
             dialoguePanel.SetActive(true);
+            
         else
             dialoguePanel.SetActive(false);
     }
