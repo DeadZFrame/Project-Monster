@@ -148,11 +148,11 @@ GameObject:
   - component: {fileID: 57360271}
   m_Layer: 0
   m_Name: LightWall
-  m_TagString: Untagged
+  m_TagString: LightWall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &57360270
 Transform:
   m_ObjectHideFlags: 0
@@ -3154,6 +3154,10 @@ PrefabInstance:
       propertyPath: DemonAnim
       value: 
       objectReference: {fileID: 1692986125}
+    - target: {fileID: 3217188254084460173, guid: e9e4a97f599a5e544929c382f94f1256, type: 3}
+      propertyPath: lightWall
+      value: 
+      objectReference: {fileID: 57360269}
     - target: {fileID: 3217188254084460173, guid: e9e4a97f599a5e544929c382f94f1256, type: 3}
       propertyPath: darkCanvas
       value: 
