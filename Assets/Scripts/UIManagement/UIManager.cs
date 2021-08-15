@@ -10,7 +10,7 @@ public class UIManager : MonoBehaviour
     public Image exorcist, demon;
     public GameObject pausePanel, dialoguePanel;
 
-    [System.NonSerialized] public bool exorcistTalking, onDialogue, trigger;
+    [System.NonSerialized] public bool exorcistTalking, onDialogue, trigger, first;
 
     public string[] dialogueArray;
     string dialogue;
@@ -31,6 +31,7 @@ public class UIManager : MonoBehaviour
 
         trigger = false;
         onDialogue = true;
+        first = true;
     }
 
     private void Update()
@@ -58,15 +59,13 @@ public class UIManager : MonoBehaviour
                     dialogue = dialogueArray[dialogueIndex];
                     TextWriter.WriteText_Static(dialogText, dialogue, .04f, true, true);
                     dialogueIndex++;
+                    first = true;
                 }
                 else if (trigger)
                 {
                     dialogue = dialogueArray[dialogueIndex];
                     TextWriter.WriteText_Static(dialogText, dialogue, .04f, true, true);
                     trigger = false;
-                }
-                else if (dialogueIndex == 4 && Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0) && dialogueIndex == 4)
-                {
                     dialogueIndex++;
                 }
                 else
@@ -82,12 +81,13 @@ public class UIManager : MonoBehaviour
             onDialogue = false;
         }
 
-        if (dialogueIndex == 4 && dialogue != dialogueArray[dialogueIndex])
+        if (dialogueIndex == 4 && first)
         {
             onDialogue = false;
+            first = false;
         }
 
-        if (dialogueIndex < 4 || dialogueIndex == 6 || dialogueIndex == 12)
+        if (dialogueIndex <= 5 || dialogueIndex == 14)
             exorcistTalking = true;
         else
             exorcistTalking = false;
