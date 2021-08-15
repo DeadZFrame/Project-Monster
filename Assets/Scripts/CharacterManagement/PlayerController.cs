@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
 
     public PsychodelicEffect manicEffect;
     public CameraShake camShake;
+    public GameManager gameManager;
 
     public LightFlickering[] lights;
 
@@ -86,6 +87,8 @@ public class PlayerController : MonoBehaviour
         {
             doorTransform = collision.gameObject.transform;
             isTouchingDoor = true;
+        }else if(collision.gameObject.CompareTag("Soul")){
+            gameManager.IncreaseSoul();
         }
     }
 
