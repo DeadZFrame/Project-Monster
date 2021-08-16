@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
 
     private Animator animator;
     public Animator DemonAnim;
+    
     Transform doorTransform;
     private bool isTouchingDoor = false;
     [System.NonSerialized]public bool paranormalEvent = false;
@@ -52,7 +53,7 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         DemonAnim = DemonAnim.GetComponent<Animator>();
-          
+       
     }
     private void Awake()
     {
@@ -201,7 +202,7 @@ public class PlayerController : MonoBehaviour
             other.gameObject.SetActive(false);
             door.Play();
         }
-
+        
     }
 
     private void OnTriggerStay(Collider other)
@@ -227,6 +228,7 @@ public class PlayerController : MonoBehaviour
             }
             
         }
+        
     }
 
     private void OnTriggerExit(Collider other)
@@ -297,7 +299,8 @@ public class PlayerController : MonoBehaviour
     {
         yield return new WaitForSeconds(time);
         AudioManager.instance.Play("Fadding");
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds (1.5f);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
+    
 }
