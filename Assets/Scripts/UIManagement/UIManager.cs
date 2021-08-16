@@ -10,7 +10,7 @@ public class UIManager : MonoBehaviour
     Scene scene;
 
     public TextMeshProUGUI dialogText, fadingText;
-    public Image exorcist, demon;
+    public Image exorcist, demon, follower;
     public GameObject pausePanel, dialoguePanel;
     public Animation end;
 
@@ -149,7 +149,12 @@ public class UIManager : MonoBehaviour
                 Debug.Log("last text"); 
             }
 
-            if(dialogueIndex == 9)
+            if(dialogueIndex == 6)
+            {
+                follower.gameObject.SetActive(true);
+            }
+
+            if(dialogueIndex == 11)
             {
                 end.gameObject.SetActive(true);
                 if (end.gameObject.activeInHierarchy)
@@ -163,7 +168,7 @@ public class UIManager : MonoBehaviour
             //    end.Play();
             //}
 
-            if (dialogueIndex == 1 || dialogueIndex == 4 || dialogueIndex == 5)
+            if (dialogueIndex == 2 || dialogueIndex == 5 || dialogueIndex == 6 || dialogueIndex == 10 || dialogueIndex == 11)
                 exorcistTalking = true;
             else
                 exorcistTalking = false;
