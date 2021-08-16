@@ -10,6 +10,7 @@ TagManager:
   - CollectableLantern
   - LightWall
   - Trigger
+  - CollectableLanternLevel2
   layers:
   - Default
   - TransparentFX
