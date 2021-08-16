@@ -15,7 +15,8 @@ ModelImporter:
     resampleCurves: 1
     optimizeGameObjects: 0
     motionNodeName: 
-    rigImportErrors: 
+    rigImportErrors: "Invalid Avatar Rig Configuration. Missing or invalid transform:\n\tRequired
+      human bone 'LeftUpperLeg' not found\n"
     rigImportWarnings: 
     animationImportErrors: 
     animationImportWarnings: 
@@ -23,7 +24,7 @@ ModelImporter:
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
     importConstraints: 0
-    animationCompression: 1
+    animationCompression: 3
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
@@ -77,7 +78,47 @@ ModelImporter:
   humanDescription:
     serializedVersion: 3
     human: []
-    skeleton: []
+    skeleton:
+    - name: DemonLowPoly(Clone)
+      parentName: 
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: "G\xF6vde"
+      parentName: DemonLowPoly(Clone)
+      position: {x: -0, y: 1.6617272, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 0.8738354}
+    - name: Cube
+      parentName: DemonLowPoly(Clone)
+      position: {x: -0.33140823, y: 1.8959945, z: 0.00000002062051}
+      rotation: {x: 0.0025386729, y: 0.047018517, z: 0.121194616, w: 0.99151134}
+      scale: {x: 0.19312471, y: 0.7391435, z: 0.19312471}
+    - name: Kanat
+      parentName: DemonLowPoly(Clone)
+      position: {x: -0, y: 1.6617272, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 0.8738354}
+    - name: Kol
+      parentName: DemonLowPoly(Clone)
+      position: {x: -0.96503365, y: 0.08630855, z: 0.32165447}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 0.99999905, y: 0.99999905, z: 0.99999905}
+    - name: ShadowMermaid.002
+      parentName: Kol
+      position: {x: 1.9272367, y: 0.2719177, z: 0.8900241}
+      rotation: {x: 0.34041795, y: -0.0025388259, z: 0.42363724, w: 0.8394288}
+      scale: {x: 0.06086215, y: 0.060862154, z: 0.060862157}
+    - name: "Ta\xE7"
+      parentName: DemonLowPoly(Clone)
+      position: {x: -1.3633944, y: 0.3454855, z: -0.02402204}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 0.99999905, y: 0.99999905, z: 0.99999905}
+    - name: ShadowMermaid.003
+      parentName: "Ta\xE7"
+      position: {x: 1.3641628, y: -0.15002966, z: 1.5347122}
+      rotation: {x: 0.5918848, y: 0, z: -0, w: 0.8060226}
+      scale: {x: 0.06338652, y: 0.06338652, z: 0.06338652}
     armTwist: 0.5
     foreArmTwist: 0.5
     upperLegTwist: 0.5
@@ -85,16 +126,16 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 0.003
+    globalScale: 0.3
     rootMotionBoneName: 
     hasTranslationDoF: 0
-    hasExtraRoot: 0
+    hasExtraRoot: 1
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
   humanoidOversampling: 1
-  avatarSetup: 0
+  avatarSetup: 1
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
   additionalBone: 0
   userData: 
