@@ -9,7 +9,7 @@ public class PlayerControllerLevel2 : MonoBehaviour
 
     Rigidbody rb;
     UIManager uI;
-
+    public Animator DemonAnimLvl2;
     private Animator animator;
     public Animator DemonAnim;
     Transform doorTransform;
@@ -50,7 +50,7 @@ public class PlayerControllerLevel2 : MonoBehaviour
     private void Start()
     {
         DemonAnim = DemonAnim.GetComponent<Animator>();
-          
+        DemonAnimLvl2 = DemonAnimLvl2.GetComponent<Animator>();
     }
     private void Awake()
     {
@@ -129,9 +129,9 @@ public class PlayerControllerLevel2 : MonoBehaviour
             isTouchingDoor = true;
             AudioManager.instance.Play("DoorBell");
         }
-        //else if(collision.gameObject.CompareTag("Soul")){
-            //gameManager.IncreaseSoul();
-        //}
+        else if(collision.gameObject.CompareTag("Soul")){
+          //  gameManager.IncreaseSoul();
+        }
 
         if(collision.gameObject.CompareTag("LightWall") && hasTookLantern)
         {
@@ -267,6 +267,7 @@ public class PlayerControllerLevel2 : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         teddys[teddyIndex].SetActive(false);
         animator.SetBool("isFading", true);
+        DemonAnimLvl2.enabled = true;
         yield return new WaitForSeconds(1f);
         darkCanvas.SetActive(true);
         yield return new WaitForSeconds(2f);
