@@ -19,6 +19,17 @@ public class PlayerController : MonoBehaviour
     public PsychodelicEffect manicEffect;
     public CameraShake camShake;
     public GameManager gameManager;
+<<<<<<< Updated upstream
+=======
+    public GameObject candle;
+
+    private bool canMove = true;
+    private bool manicEffectIsOver = false;
+    private bool first;
+    public GameObject lightWall;
+
+    public Animation door;
+>>>>>>> Stashed changes
 
   
 
@@ -42,7 +53,11 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         DemonAnim = DemonAnim.GetComponent<Animator>();
+<<<<<<< Updated upstream
           
+=======
+        first = true;
+>>>>>>> Stashed changes
     }
     private void Awake()
     {
@@ -111,11 +126,32 @@ public class PlayerController : MonoBehaviour
             isTouchingDoor = true;
             AudioManager.instance.Play("DoorBell");
         }
+<<<<<<< Updated upstream
         else if(collision.gameObject.CompareTag("Soul")){
             gameManager.IncreaseSoul();
-        }
-       
+=======
+        //else if(collision.gameObject.CompareTag("Soul")){
+            //gameManager.IncreaseSoul();
+        //}
 
+        if(collision.gameObject.CompareTag("LightWall") && hasTookLantern)
+        {
+            collision.gameObject.SetActive(false);
+        }
+
+        else if(collision.gameObject.CompareTag("LightWall") && !hasTookLantern)
+        {
+            Scene scene = SceneManager.GetActiveScene();
+            if (scene.name.Equals("MainScene"))
+            {
+                if (first)
+                {
+                    uI.trigger = true;
+                    first = false;
+                }
+            }
+>>>>>>> Stashed changes
+        }
     }
 
     private void OnCollisionExit(Collision collision)
@@ -151,9 +187,21 @@ public class PlayerController : MonoBehaviour
 
         if (other.gameObject.tag.Equals("Trigger"))
         {
+<<<<<<< Updated upstream
             if (!uI.trigger)
                 uI.trigger = true;
             other.gameObject.SetActive(false);
+=======
+            Scene scene = SceneManager.GetActiveScene();
+            if (scene.name.Equals("MainScene"))
+            {
+                if (!uI.trigger)
+                    uI.trigger = true;
+                other.gameObject.SetActive(false);
+                door.Play();
+            }
+
+>>>>>>> Stashed changes
         }
 
         StartCoroutine(SpawnAnotherTeddy());

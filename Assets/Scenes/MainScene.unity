@@ -2600,6 +2600,49 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+<<<<<<< Updated upstream
+=======
+    - target: {fileID: 8922858765448389507, guid: b3e57a2326f948b42b5591552800c4ad, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8922858765921575000, guid: b3e57a2326f948b42b5591552800c4ad, type: 3}
+      propertyPath: demon
+      value: 
+      objectReference: {fileID: 1767846562}
+    - target: {fileID: 8922858765921575000, guid: b3e57a2326f948b42b5591552800c4ad, type: 3}
+      propertyPath: tooDark
+      value: It's too dark to go there.
+      objectReference: {fileID: 0}
+    - target: {fileID: 8922858765921575000, guid: b3e57a2326f948b42b5591552800c4ad, type: 3}
+      propertyPath: dialogueArray.Array.size
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 8922858765921575000, guid: b3e57a2326f948b42b5591552800c4ad, type: 3}
+      propertyPath: dialogueArray.Array.data[16]
+      value: It's too dark to go there.
+      objectReference: {fileID: 0}
+    - target: {fileID: 8922858765921575000, guid: b3e57a2326f948b42b5591552800c4ad, type: 3}
+      propertyPath: dialogueArray.Array.data[17]
+      value: It's too dark to go there.
+      objectReference: {fileID: 0}
+    - target: {fileID: 8922858765921575000, guid: b3e57a2326f948b42b5591552800c4ad, type: 3}
+      propertyPath: dialogueArray.Array.data[18]
+      value: It's too dark to go there.
+      objectReference: {fileID: 0}
+    - target: {fileID: 8922858765921575000, guid: b3e57a2326f948b42b5591552800c4ad, type: 3}
+      propertyPath: dialogueArray.Array.data[19]
+      value: "DON'T WR\u0130TE HERE!"
+      objectReference: {fileID: 0}
+    - target: {fileID: 8922858766416666509, guid: b3e57a2326f948b42b5591552800c4ad, type: 3}
+      propertyPath: m_Color.a
+      value: 0.8627451
+      objectReference: {fileID: 0}
+    - target: {fileID: 8922858767054222195, guid: b3e57a2326f948b42b5591552800c4ad, type: 3}
+      propertyPath: m_Color.a
+      value: 0.8627451
+      objectReference: {fileID: 0}
+>>>>>>> Stashed changes
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3e57a2326f948b42b5591552800c4ad, type: 3}
 --- !u!4 &183801203133657651

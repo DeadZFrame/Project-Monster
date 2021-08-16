@@ -2037,7 +2037,56 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+<<<<<<< Updated upstream
     m_RemovedComponents: []
+=======
+    - target: {fileID: 8922858765921575000, guid: b3e57a2326f948b42b5591552800c4ad, type: 3}
+      propertyPath: dialogueArray.Array.size
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8922858765921575000, guid: b3e57a2326f948b42b5591552800c4ad, type: 3}
+      propertyPath: dialogueArray.Array.data[0]
+      value: I guess finding me is easier than I thought
+      objectReference: {fileID: 0}
+    - target: {fileID: 8922858765921575000, guid: b3e57a2326f948b42b5591552800c4ad, type: 3}
+      propertyPath: dialogueArray.Array.data[1]
+      value: WHY DON'T YOU GIVE ME CHOICES THIS TIME?
+      objectReference: {fileID: 0}
+    - target: {fileID: 8922858765921575000, guid: b3e57a2326f948b42b5591552800c4ad, type: 3}
+      propertyPath: dialogueArray.Array.data[2]
+      value: HAHAHA
+      objectReference: {fileID: 0}
+    - target: {fileID: 8922858765921575000, guid: b3e57a2326f948b42b5591552800c4ad, type: 3}
+      propertyPath: dialogueArray.Array.data[3]
+      value: Don't you want to get rid of this house anymore?
+      objectReference: {fileID: 0}
+    - target: {fileID: 8922858765921575000, guid: b3e57a2326f948b42b5591552800c4ad, type: 3}
+      propertyPath: dialogueArray.Array.data[4]
+      value: Ha?...
+      objectReference: {fileID: 0}
+    - target: {fileID: 8922858765921575000, guid: b3e57a2326f948b42b5591552800c4ad, type: 3}
+      propertyPath: dialogueArray.Array.data[5]
+      value: (Looks at himself in the mirror)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8922858765921575000, guid: b3e57a2326f948b42b5591552800c4ad, type: 3}
+      propertyPath: dialogueArray.Array.data[6]
+      value: 'You human... '
+      objectReference: {fileID: 0}
+    - target: {fileID: 8922858765921575000, guid: b3e57a2326f948b42b5591552800c4ad, type: 3}
+      propertyPath: dialogueArray.Array.data[7]
+      value: You can always find a way to entertain me
+      objectReference: {fileID: 0}
+    - target: {fileID: 8922858765921575000, guid: b3e57a2326f948b42b5591552800c4ad, type: 3}
+      propertyPath: dialogueArray.Array.data[8]
+      value: HAHAHA...
+      objectReference: {fileID: 0}
+    - target: {fileID: 8922858765921575000, guid: b3e57a2326f948b42b5591552800c4ad, type: 3}
+      propertyPath: dialogueArray.Array.data[9]
+      value: "DON'T WR\u0130TE HERE!"
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 2653508151739456803, guid: b3e57a2326f948b42b5591552800c4ad, type: 3}
+>>>>>>> Stashed changes
   m_SourcePrefab: {fileID: 100100000, guid: b3e57a2326f948b42b5591552800c4ad, type: 3}
 --- !u!1 &1435161518
 GameObject:
