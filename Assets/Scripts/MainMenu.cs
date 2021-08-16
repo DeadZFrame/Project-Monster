@@ -12,7 +12,7 @@ public class MainMenu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        lastGameButton.interactable = (PlayerPrefs.HasKey("currentLevel")) ? true : false ;
+       // lastGameButton.interactable = (PlayerPrefs.HasKey("currentLevel")) ? true : false ;
     }
 
     // Update is called once per frame
