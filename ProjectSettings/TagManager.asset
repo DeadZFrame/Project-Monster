@@ -10,7 +10,7 @@ TagManager:
   - CollectableLantern
   - LightWall
   - Trigger
-  - CollectableLanternLevel2
+  - Toilet
   layers:
   - Default
   - TransparentFX

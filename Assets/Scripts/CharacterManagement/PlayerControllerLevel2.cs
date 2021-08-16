@@ -72,6 +72,7 @@ public class PlayerControllerLevel2 : MonoBehaviour
         if(Input.GetKey(KeyCode.E))
         {
             isPressingE = true;
+            AudioManager.instance.Stop("Destruct");
         }
 
         if(Input.GetKeyUp(KeyCode.E))
@@ -159,7 +160,9 @@ public class PlayerControllerLevel2 : MonoBehaviour
             manicEffect.enabled = true;
             camShake.enabled = true;
             paranormalEvent = true;
-            
+
+            AudioManager.instance.Play("Destruct");
+
             for(int i=0; i<lights.Length; i++)
             {
                 lights[i].enabled = true;
@@ -189,6 +192,11 @@ public class PlayerControllerLevel2 : MonoBehaviour
             other.gameObject.SetActive(false);
         }
 
+        if (other.gameObject.CompareTag("Toilet"))
+        {
+            AudioManager.instance.Play("WaterSound");
+        }
+
     }
 
     private void OnTriggerStay(Collider other)
@@ -203,7 +211,6 @@ public class PlayerControllerLevel2 : MonoBehaviour
                 hasTookLantern = true;
             }
         }
-
     }
 
     private void OnTriggerExit(Collider other)
@@ -261,6 +268,7 @@ public class PlayerControllerLevel2 : MonoBehaviour
         teddys[teddyIndex].SetActive(false);
         animator.SetBool("isFading", true);
         DemonAnimLvl2.enabled = true;
+        AudioManager.instance.Play("DemonicSound");
         yield return new WaitForSeconds(1f);
         darkCanvas.SetActive(true);
         yield return new WaitForSeconds(2f);
