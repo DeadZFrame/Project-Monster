@@ -25,9 +25,6 @@ public class PlayerControllerLevel2 : MonoBehaviour
     private bool manicEffectIsOver = false;
     public GameObject lightWall;
 
-
-
-
     public LightFlickering[] lights;
 
 
@@ -129,9 +126,12 @@ public class PlayerControllerLevel2 : MonoBehaviour
             isTouchingDoor = true;
             AudioManager.instance.Play("DoorBell");
         }
+<<<<<<< Updated upstream
         else if(collision.gameObject.CompareTag("Soul")){
           //  gameManager.IncreaseSoul();
         }
+=======
+>>>>>>> Stashed changes
 
         if(collision.gameObject.CompareTag("LightWall") && hasTookLantern)
         {
@@ -199,13 +199,12 @@ public class PlayerControllerLevel2 : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.CompareTag("CollectableLantern"))
+        if (other.gameObject.CompareTag("CollectableLanternLevel2"))
         {
-            if (isPressingE && manicEffectIsOver)
+            if (isPressingE)
             {
                 other.gameObject.SetActive(false);
                 animator.SetBool("isCandleTrue", true);
-                lantern.SetActive(true);
                 candle.SetActive(true);
                 hasTookLantern = true;
             }
