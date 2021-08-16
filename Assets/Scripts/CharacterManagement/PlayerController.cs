@@ -27,6 +27,8 @@ public class PlayerController : MonoBehaviour
     private bool manicEffectIsOver = false;
     public GameObject lightWall;
 
+    private bool first;
+
     public Animation door;
 
 
@@ -52,7 +54,8 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        DemonAnim = DemonAnim.GetComponent<Animator>(); 
+        DemonAnim = DemonAnim.GetComponent<Animator>();
+        first = true;
     }
     private void Awake()
     {
@@ -145,9 +148,18 @@ public class PlayerController : MonoBehaviour
 
         else if(collision.gameObject.CompareTag("LightWall") && !hasTookLantern)
         {
-            Debug.Log("It's too dark to go there.");
+            Scene scene = SceneManager.GetActiveScene();
+            if (scene.name.Equals("MainScene"))
+            {
+                if (first)
+                {
+                    uI.trigger = true;
+                    first = false;
+                }
+            }
+
         }
-       
+
 
     }
 
@@ -197,12 +209,17 @@ public class PlayerController : MonoBehaviour
 
         if (other.gameObject.tag.Equals("Trigger"))
         {
-            if (!uI.trigger)
-                uI.trigger = true;
-            other.gameObject.SetActive(false);
-            door.Play();
+            Scene scene = SceneManager.GetActiveScene();
+            if (scene.name.Equals("MainScene"))
+            {
+                if (!uI.trigger)
+                    uI.trigger = true;
+                other.gameObject.SetActive(false);
+                door.Play();
+            }
+
         }
-        
+
     }
 
     private void OnTriggerStay(Collider other)

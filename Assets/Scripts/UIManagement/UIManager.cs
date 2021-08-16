@@ -12,6 +12,7 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI dialogText, fadingText;
     public Image exorcist, demon;
     public GameObject pausePanel, dialoguePanel;
+    public Animation end;
 
     [System.NonSerialized] public bool exorcistTalking, onDialogue, trigger, first;
 
@@ -24,6 +25,7 @@ public class UIManager : MonoBehaviour
     {
         dialogText.GetComponent<TextMeshProUGUI>();
         fadingText.GetComponent<TextMeshProUGUI>();
+        //end.GetComponent<Animation>();
     }
 
     private void Start()
@@ -92,7 +94,7 @@ public class UIManager : MonoBehaviour
             else
             {
                 fadingText.gameObject.SetActive(false);
-                onDialogue = false;
+                onDialogue = false;  
             }
 
             if (dialogueIndex == 4 && first)
@@ -116,7 +118,7 @@ public class UIManager : MonoBehaviour
         {
             if (dialogueIndex != dialogueArray.Length - 1 && onDialogue)
             {
-                if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0) || trigger)
+                if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
                 {
                     if (TextWriter.instance.isWrited)
                     {
@@ -142,8 +144,24 @@ public class UIManager : MonoBehaviour
             else
             {
                 fadingText.gameObject.SetActive(false);
-                onDialogue = false;
+                //onDialogue = false;
+                
+                Debug.Log("last text"); 
             }
+
+            if(dialogueIndex == 9)
+            {
+                end.gameObject.SetActive(true);
+                if (end.gameObject.activeInHierarchy)
+                    StartCoroutine(toMainMenu(2f));
+            }
+
+            Debug.Log(dialogueIndex);
+
+            //if(dialogueIndex == 9)
+            //{
+            //    end.Play();
+            //}
 
             if (dialogueIndex == 1 || dialogueIndex == 4 || dialogueIndex == 5)
                 exorcistTalking = true;
@@ -173,5 +191,11 @@ public class UIManager : MonoBehaviour
         {
             pausePanel.SetActive(false);
         }
+    }
+
+    IEnumerator toMainMenu(float time)
+    {
+        yield return new WaitForSeconds(time);
+        SceneManager.LoadScene("MainMenu");
     }
 }

@@ -27,6 +27,7 @@ public class PlayerControllerLevel2 : MonoBehaviour
 
     public LightFlickering[] lights;
 
+    private bool first;
 
     public GameObject lantern;
 
@@ -48,6 +49,7 @@ public class PlayerControllerLevel2 : MonoBehaviour
     {
         DemonAnim = DemonAnim.GetComponent<Animator>();
         DemonAnimLvl2 = DemonAnimLvl2.GetComponent<Animator>();
+        first = true;
     }
     private void Awake()
     {
@@ -78,6 +80,12 @@ public class PlayerControllerLevel2 : MonoBehaviour
         if(Input.GetKeyUp(KeyCode.E))
         {
             isPressingE = false;
+        }
+
+        if (DemonAnimLvl2.enabled && first)
+        {
+            uI.trigger = true;
+            first = false;
         }
     }
     private void FixedUpdate()
