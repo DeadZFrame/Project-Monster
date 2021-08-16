@@ -50,13 +50,9 @@ public class PlayerController : MonoBehaviour
 
     public GameObject staticLantern;
 
-    public AudioSource audioSource;
-
     private void Start()
     {
-        DemonAnim = DemonAnim.GetComponent<Animator>();
-        audioSource = GetComponent<AudioSource>();
-       
+        DemonAnim = DemonAnim.GetComponent<Animator>(); 
     }
     private void Awake()
     {
@@ -98,14 +94,11 @@ public class PlayerController : MonoBehaviour
             {
                 Movement();
                 animator.SetBool("isWalking", true);
-                
-            }
-            
+            }  
         }
         else
         {
             animator.SetBool("isWalking", false);
-            audioSource.Stop();
         }
 
         //if (Input.GetKeyDown(KeyCode.Space))
@@ -121,7 +114,6 @@ public class PlayerController : MonoBehaviour
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
 
-        audioSource.Play();
 
         Vector3 inputVector = new Vector3(horizontalInput, 0, verticalInput);
         inputVector = Vector3.ClampMagnitude(inputVector, 1);

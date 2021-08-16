@@ -247,6 +247,7 @@ public class PlayerControllerLevel2 : MonoBehaviour
         firstTime = false;
         canMove = true;
         manicEffectIsOver = true;
+        AudioManager.instance.Stop("Destruct");
     }
 
     IEnumerator SpawnAnotherTeddy()
