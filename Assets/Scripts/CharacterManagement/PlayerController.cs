@@ -77,6 +77,7 @@ public class PlayerController : MonoBehaviour
         if(Input.GetKey(KeyCode.E))
         {
             isPressingE = true;
+            AudioManager.instance.Stop("Destruct");
         }
 
         if(Input.GetKeyUp(KeyCode.E))
@@ -178,11 +179,13 @@ public class PlayerController : MonoBehaviour
                 //canMove = false;
                 animator.SetBool("isWalking", false);
                 teddys[teddyIndex].GetComponent<TeddyScript>().isFirstTeddy = false;
+                AudioManager.instance.Play("DemonicSound");
             }
 
             else if(teddys[teddyIndex].GetComponent<TeddyScript>().isLastTeddy)
             {
                 lastTeddyAction = true;
+                AudioManager.instance.Play("Destruct");
             }
             AudioManager.instance.Play("DemonDoorClip");
 
@@ -214,6 +217,15 @@ public class PlayerController : MonoBehaviour
             }
         }
 
+        if(other.gameObject.name.Equals("TeddyBear"))
+        {
+            Debug.Log("lan");
+            if (Input.GetKey(KeyCode.E))
+            {
+                StartCoroutine(WaitMQ(1f));
+            }
+            
+        }
     }
 
     private void OnTriggerExit(Collider other)
@@ -236,6 +248,7 @@ public class PlayerController : MonoBehaviour
             if(firstTime)
             {
                 StartCoroutine(LetThereBeDark());
+                AudioManager.instance.Play("MainMusic");
             }
 
             //lantern.SetActive(true);
@@ -279,5 +292,9 @@ public class PlayerController : MonoBehaviour
         animator.SetBool("isFading", false);
         lastTeddyAction = false;
     }
-
+    IEnumerator WaitMQ(float time)
+    {
+        yield return new WaitForSeconds(time);
+        AudioManager.instance.Play("Fadding");
+    }
 }

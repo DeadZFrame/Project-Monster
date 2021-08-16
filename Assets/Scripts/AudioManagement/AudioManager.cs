@@ -42,4 +42,18 @@ public class AudioManager : MonoBehaviour
         }
 
     }
+    public void Stop(string name)
+    {
+        if (!soundMuted)
+        {
+            Sound s = Array.Find(sounds, sound => sound.name == name);
+            if (s == null)
+            {
+                Debug.LogWarning("Your sound named " + name + " does not exits");
+                return;
+            }
+            s.audioSource.Stop();
+        }
+
+    }
 }
