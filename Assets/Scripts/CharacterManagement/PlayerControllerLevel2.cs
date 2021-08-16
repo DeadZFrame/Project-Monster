@@ -133,10 +133,15 @@ public class PlayerControllerLevel2 : MonoBehaviour
         {
             doorTransform = collision.gameObject.transform;
             isTouchingDoor = true;
-            AudioManager.instance.Play("DoorBell");
+
+            if (collision.gameObject.GetComponent<DoorScript>().shouldOpen)
+            {
+                AudioManager.instance.Play("DoorBell");
+                collision.gameObject.GetComponent<DoorScript>().shouldOpen = false;
+            };
         }
 
-        if(collision.gameObject.CompareTag("LightWall") && hasTookLantern)
+        if (collision.gameObject.CompareTag("LightWall") && hasTookLantern)
         {
             collision.gameObject.SetActive(false);
         }

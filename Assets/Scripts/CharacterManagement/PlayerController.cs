@@ -135,7 +135,12 @@ public class PlayerController : MonoBehaviour
         {
             doorTransform = collision.gameObject.transform;
             isTouchingDoor = true;
-            AudioManager.instance.Play("DoorBell");
+
+            if (collision.gameObject.GetComponent<DoorScript>().shouldOpen)
+            {
+                AudioManager.instance.Play("DoorBell");
+                collision.gameObject.GetComponent<DoorScript>().shouldOpen = false;
+            };
         }
         //else if(collision.gameObject.CompareTag("Soul")){
             //gameManager.IncreaseSoul();
