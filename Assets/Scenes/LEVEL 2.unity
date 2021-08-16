@@ -1937,6 +1937,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: AudioManager
       objectReference: {fileID: 0}
+    - target: {fileID: 8988562874234204671, guid: 760d5b520dc98e64fad14b43c6b240c0, type: 3}
+      propertyPath: sounds.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8988562874234204671, guid: 760d5b520dc98e64fad14b43c6b240c0, type: 3}
+      propertyPath: sounds.Array.data[0].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 037134e650dca2842adbf8599c052e44, type: 3}
+    - target: {fileID: 8988562874234204671, guid: 760d5b520dc98e64fad14b43c6b240c0, type: 3}
+      propertyPath: sounds.Array.data[0].name
+      value: WaterSound
+      objectReference: {fileID: 0}
+    - target: {fileID: 8988562874234204671, guid: 760d5b520dc98e64fad14b43c6b240c0, type: 3}
+      propertyPath: sounds.Array.data[0].volume
+      value: 0.127
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 760d5b520dc98e64fad14b43c6b240c0, type: 3}
 --- !u!1 &771153186 stripped
@@ -3790,6 +3806,19 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7354558996608927344, guid: 35ac3983cdda724428483650f85ee6f5, type: 3}
   m_PrefabInstance: {fileID: 1730922158}
   m_PrefabAsset: {fileID: 0}
+--- !u!65 &1611591300
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1611591298}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.906116, y: 4.624185, z: 137.40977}
+  m_Center: {x: 0.7345804, y: -1.3120925, z: 67.70776}
 --- !u!64 &1611591302
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3957,6 +3986,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 35ac3983cdda724428483650f85ee6f5, type: 3}
       propertyPath: m_Name
+      value: Toilet
+      objectReference: {fileID: 0}
+    - target: {fileID: 7354558996608927344, guid: 35ac3983cdda724428483650f85ee6f5, type: 3}
+      propertyPath: m_TagString
       value: Toilet
       objectReference: {fileID: 0}
     m_RemovedComponents: []
