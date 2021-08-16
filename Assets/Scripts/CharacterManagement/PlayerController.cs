@@ -134,9 +134,9 @@ public class PlayerController : MonoBehaviour
             isTouchingDoor = true;
             AudioManager.instance.Play("DoorBell");
         }
-        else if(collision.gameObject.CompareTag("Soul")){
-            gameManager.IncreaseSoul();
-        }
+        //else if(collision.gameObject.CompareTag("Soul")){
+            //gameManager.IncreaseSoul();
+        //}
 
         if(collision.gameObject.CompareTag("LightWall") && hasTookLantern)
         {
@@ -219,16 +219,6 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if(other.gameObject.name.Equals("TeddyBear"))
-        {
-            Debug.Log("lan");
-            if (Input.GetKey(KeyCode.E))
-            {
-                StartCoroutine(WaitMQ(1f));
-            }
-            
-        }
-        
     }
 
     private void OnTriggerExit(Collider other)
@@ -287,20 +277,14 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         teddys[teddyIndex].SetActive(false);
         animator.SetBool("isFading", true);
+        AudioManager.instance.Play("Fadding");
         yield return new WaitForSeconds(1f);
         darkCanvas.SetActive(true);
         yield return new WaitForSeconds(2f);
-        darkCanvas.SetActive(false);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         yield return new WaitForSeconds(1f);
         animator.SetBool("isFading", false);
         lastTeddyAction = false;
     }
-    IEnumerator WaitMQ(float time)
-    {
-        yield return new WaitForSeconds(time);
-        AudioManager.instance.Play("Fadding");
-        yield return new WaitForSeconds (1.5f);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-    }
-    
+
 }

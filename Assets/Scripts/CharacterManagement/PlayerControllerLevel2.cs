@@ -129,9 +129,9 @@ public class PlayerControllerLevel2 : MonoBehaviour
             isTouchingDoor = true;
             AudioManager.instance.Play("DoorBell");
         }
-        else if(collision.gameObject.CompareTag("Soul")){
-            gameManager.IncreaseSoul();
-        }
+        //else if(collision.gameObject.CompareTag("Soul")){
+            //gameManager.IncreaseSoul();
+        //}
 
         if(collision.gameObject.CompareTag("LightWall") && hasTookLantern)
         {

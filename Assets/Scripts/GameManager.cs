@@ -24,8 +24,8 @@ public class GameManager : MonoBehaviour
   private Transform checkpoint3;
   [SerializeField]
   private GameObject player;
-  [SerializeField]
-  private TMP_Text soulText;
+  //[SerializeField]
+  //private TMP_Text soulText;
   public void Start () {
     if(PlayerPrefs.HasKey("currentLevel")){
       currentLevel = PlayerPrefs.GetInt("currentLevel");
@@ -36,11 +36,11 @@ public class GameManager : MonoBehaviour
         player.transform.position = checkpoint3.position;
       }
     }else {
-      Debug.Log("Yeni Başladın Demek Heee");
+     // Debug.Log("Yeni Başladın Demek Heee");
     }
-    soulText.text = numberOfSouls.ToString();
+    //soulText.text = numberOfSouls.ToString();
   }
-  public void IncreaseSoul () {
+  /*public void IncreaseSoul () {
     print("touched");
     numberOfSouls++;
     soulText.text = numberOfSouls.ToString();
@@ -48,7 +48,7 @@ public class GameManager : MonoBehaviour
       UpdateLevel();
     }
     
-  }
+  }*/
   public void UpdateLevel () {
     if(currentLevel>3)
       return;
