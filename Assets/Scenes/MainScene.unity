@@ -1899,11 +1899,11 @@ Animation:
   m_GameObject: {fileID: 1574072538}
   m_Enabled: 1
   serializedVersion: 3
-  m_Animation: {fileID: 0}
+  m_Animation: {fileID: 7400000, guid: 1f327ad28f45a5349bdd16f18062fd28, type: 2}
   m_Animations:
   - {fileID: 7400000, guid: 1f327ad28f45a5349bdd16f18062fd28, type: 2}
   m_WrapMode: 0
-  m_PlayAutomatically: 1
+  m_PlayAutomatically: 0
   m_AnimatePhysics: 0
   m_CullingType: 0
 --- !u!65 &1574072542
@@ -3211,6 +3211,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3217188254084460173, guid: e9e4a97f599a5e544929c382f94f1256, type: 3}
+      propertyPath: door
+      value: 
+      objectReference: {fileID: 1574072539}
     - target: {fileID: 3217188254084460173, guid: e9e4a97f599a5e544929c382f94f1256, type: 3}
       propertyPath: candle
       value: 
@@ -4536,7 +4540,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8988562874234204671, guid: 760d5b520dc98e64fad14b43c6b240c0, type: 3}
       propertyPath: sounds.Array.size
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8988562874234204671, guid: 760d5b520dc98e64fad14b43c6b240c0, type: 3}
       propertyPath: sounds.Array.data[0].clip
@@ -4565,10 +4569,10 @@ PrefabInstance:
     - target: {fileID: 8988562874234204671, guid: 760d5b520dc98e64fad14b43c6b240c0, type: 3}
       propertyPath: sounds.Array.data[3].clip
       value: 
-      objectReference: {fileID: 8300000, guid: 7f007744fd44dab49806bdd9a99e03c6, type: 3}
+      objectReference: {fileID: 8300000, guid: 2dae03c4b3ca9494d86555e595874fb1, type: 3}
     - target: {fileID: 8988562874234204671, guid: 760d5b520dc98e64fad14b43c6b240c0, type: 3}
       propertyPath: sounds.Array.data[3].name
-      value: CarSound
+      value: MainMusic
       objectReference: {fileID: 0}
     - target: {fileID: 8988562874234204671, guid: 760d5b520dc98e64fad14b43c6b240c0, type: 3}
       propertyPath: sounds.Array.data[0].volume
@@ -4584,7 +4588,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8988562874234204671, guid: 760d5b520dc98e64fad14b43c6b240c0, type: 3}
       propertyPath: sounds.Array.data[3].volume
-      value: 0.06
+      value: 0.07
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 760d5b520dc98e64fad14b43c6b240c0, type: 3}

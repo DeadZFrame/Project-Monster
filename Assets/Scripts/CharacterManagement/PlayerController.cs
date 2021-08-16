@@ -25,7 +25,7 @@ public class PlayerController : MonoBehaviour
     private bool manicEffectIsOver = false;
     public GameObject lightWall;
 
-
+    public Animation door;
 
 
     public LightFlickering[] lights;
@@ -58,6 +58,7 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
         uI = FindObjectOfType<UIManager>();
+        door.GetComponent<Animation>();
     }
 
     private void Update()
@@ -194,6 +195,7 @@ public class PlayerController : MonoBehaviour
             if (!uI.trigger)
                 uI.trigger = true;
             other.gameObject.SetActive(false);
+            door.Play();
         }
 
     }
